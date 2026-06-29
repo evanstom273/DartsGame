@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AIProfile" format=3 uid="uid://btd2tg8nwgby3"]
+
+[ext_resource type="Script" uid="uid://cc5nw4assasai" path="res://scripts/ai_profile.gd" id="1_ai_profile"]
+
+[resource]
+script = ExtResource("1_ai_profile")
+display_name = "County"
+average_min = 30.0
+average_max = 60.0
+variance = 8.0
+treble_consistency = 0.16
+double_consistency = 0.16
+single_consistency = 0.68
+nerve = 0.4

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AIProfile" format=3 uid="uid://dxlau4n7utcro"]
+
+[ext_resource type="Script" uid="uid://cc5nw4assasai" path="res://scripts/ai_profile.gd" id="1_ai_profile"]
+
+[resource]
+script = ExtResource("1_ai_profile")
+display_name = "World Class"
+average_min = 80.0
+average_max = 105.0
+variance = 7.0
+treble_consistency = 0.64
+double_consistency = 0.48
+single_consistency = 0.92
+nerve = 0.78
+preferred_scoring_targets = Array[String](["T20", "T19", "T18", "T17"])
+preferred_checkout_doubles = Array[String](["D20", "D16", "D18", "D12", "D10", "D8"])

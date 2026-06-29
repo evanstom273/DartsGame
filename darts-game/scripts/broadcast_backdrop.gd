@@ -4,31 +4,37 @@ extends Node2D
 const SCREEN_SIZE: Vector2 = Vector2(1920.0, 1080.0)
 const GRADIENT_BANDS: int = 44
 
+## Enables the subtle arena LED shimmer, haze drift, and spotlight breathing during gameplay.
 @export var motion_enabled: bool = true:
 	set(value):
 		motion_enabled = value
 		queue_redraw()
 
+## Allows backdrop motion to animate while viewing the scene in the Godot editor.
 @export var preview_motion_in_editor: bool = false:
 	set(value):
 		preview_motion_in_editor = value
 		queue_redraw()
 
+## Main cool arena accent used for LED ribbons, haze, and board-side lighting.
 @export var accent_color_primary: Color = Color(0.28, 0.34, 0.95, 1.0):
 	set(value):
 		accent_color_primary = value
 		queue_redraw()
 
+## Secondary violet accent blended into the arena lighting and camera split glow.
 @export var accent_color_secondary: Color = Color(0.56, 0.28, 0.88, 1.0):
 	set(value):
 		accent_color_secondary = value
 		queue_redraw()
 
+## Center of the warm board spotlight in 1920x1080 canvas coordinates.
 @export var spotlight_center: Vector2 = Vector2(1410.0, 540.0):
 	set(value):
 		spotlight_center = value
 		queue_redraw()
 
+## X coordinate of the broadcast split between scoreboard side and board camera side.
 @export var divider_x: float = 900.0:
 	set(value):
 		divider_x = value

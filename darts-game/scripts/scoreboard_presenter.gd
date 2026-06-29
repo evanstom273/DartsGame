@@ -6,6 +6,7 @@ const THROWER_AI: int = 1
 const INACTIVE_ROW_COLOR: Color = Color(0.74, 0.76, 0.86, 1.0)
 const HIDDEN_BADGE_COLOR: Color = Color(1.0, 1.0, 1.0, 0.0)
 
+## Thrower currently taking a turn; drives row highlight and current-throw icon.
 @export_enum("Player", "AI") var active_thrower: int = THROWER_PLAYER:
 	set(value):
 		if active_thrower == value:
@@ -14,6 +15,7 @@ const HIDDEN_BADGE_COLOR: Color = Color(1.0, 1.0, 1.0, 0.0)
 		active_thrower = value
 		_refresh_ui()
 
+## Thrower who started the current leg; drives the first-throw icon.
 @export_enum("Player", "AI") var first_thrower: int = THROWER_PLAYER:
 	set(value):
 		if first_thrower == value:
@@ -22,6 +24,7 @@ const HIDDEN_BADGE_COLOR: Color = Color(1.0, 1.0, 1.0, 0.0)
 		first_thrower = value
 		_refresh_ui()
 
+## Reserved selector for route ownership; current route rows are positioned by player/AI row values.
 @export_enum("Player", "AI") var checkout_route_thrower: int = THROWER_PLAYER:
 	set(value):
 		if checkout_route_thrower == value:
@@ -30,6 +33,7 @@ const HIDDEN_BADGE_COLOR: Color = Color(1.0, 1.0, 1.0, 0.0)
 		checkout_route_thrower = value
 		_refresh_ui()
 
+## Shows the player's gold 9-dart badge when they are on a possible nine-darter.
 @export var player_on_nine: bool = false:
 	set(value):
 		if player_on_nine == value:
@@ -38,6 +42,7 @@ const HIDDEN_BADGE_COLOR: Color = Color(1.0, 1.0, 1.0, 0.0)
 		player_on_nine = value
 		_refresh_ui()
 
+## Shows the AI's gold 9-dart badge when it is on a possible nine-darter.
 @export var ai_on_nine: bool = false:
 	set(value):
 		if ai_on_nine == value:
@@ -46,6 +51,7 @@ const HIDDEN_BADGE_COLOR: Color = Color(1.0, 1.0, 1.0, 0.0)
 		ai_on_nine = value
 		_refresh_ui()
 
+## Shows or hides the checkout route tile group.
 @export var checkout_route_visible: bool = false:
 	set(value):
 		if checkout_route_visible == value:
@@ -54,18 +60,31 @@ const HIDDEN_BADGE_COLOR: Color = Color(1.0, 1.0, 1.0, 0.0)
 		checkout_route_visible = value
 		_refresh_ui()
 
+## Enables subtle row, badge, and checkout-route pulsing.
 @export var pulse_enabled: bool = true
+## Control node containing the checkout route tiles.
 @export var checkout_route_path: NodePath = NodePath("CheckoutRoute")
+## Control row for player score/legs/sets and indicators.
 @export var player_row_path: NodePath = NodePath("MatchScoreboard/PlayerRow")
+## Control row for AI score/legs/sets and indicators.
 @export var ai_row_path: NodePath = NodePath("MatchScoreboard/AIRow")
+## Player icon shown when the player threw first in the leg.
 @export var player_first_icon_path: NodePath = NodePath("MatchScoreboard/PlayerRow/FirstThrowIcon")
+## AI icon shown when the AI threw first in the leg.
 @export var ai_first_icon_path: NodePath = NodePath("MatchScoreboard/AIRow/FirstThrowIcon")
+## Player icon shown while the player is currently throwing.
 @export var player_current_icon_path: NodePath = NodePath("MatchScoreboard/PlayerRow/CurrentThrowIcon")
+## AI icon shown while the AI is currently throwing.
 @export var ai_current_icon_path: NodePath = NodePath("MatchScoreboard/AIRow/CurrentThrowIcon")
+## Player 9-dart badge node.
 @export var player_nine_badge_path: NodePath = NodePath("MatchScoreboard/PlayerRow/NineDartBadge")
+## AI 9-dart badge node.
 @export var ai_nine_badge_path: NodePath = NodePath("MatchScoreboard/AIRow/NineDartBadge")
+## Current top offset applied to the checkout route group.
 @export var checkout_route_top: float = 296.0
+## Top offset that aligns route tiles to the player row.
 @export var player_route_top: float = 296.0
+## Top offset that aligns route tiles to the AI row.
 @export var ai_route_top: float = 350.0
 
 var _pulse_time: float = 0.0

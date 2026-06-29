@@ -46,6 +46,38 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.18, 0.14, 0.44, 0.035)
 
+[node name="BoardFrameTop" type="ColorRect" parent="BoardCameraZone" unique_id=2072764294]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 112.0
+offset_right = 1824.0
+offset_bottom = 114.0
+color = Color(0.58, 0.62, 1, 0.11)
+
+[node name="BoardFrameBottom" type="ColorRect" parent="BoardCameraZone" unique_id=665704537]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 966.0
+offset_right = 1824.0
+offset_bottom = 968.0
+color = Color(0.58, 0.62, 1, 0.08)
+
+[node name="BoardFrameLeft" type="ColorRect" parent="BoardCameraZone" unique_id=49462712]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 112.0
+offset_right = 998.0
+offset_bottom = 968.0
+color = Color(0.58, 0.62, 1, 0.07)
+
+[node name="BoardFrameRight" type="ColorRect" parent="BoardCameraZone" unique_id=644237022]
+layout_mode = 0
+offset_left = 1822.0
+offset_top = 112.0
+offset_right = 1824.0
+offset_bottom = 968.0
+color = Color(0.58, 0.62, 1, 0.07)
+
 [node name="ScoreboardLayer" type="Control" parent="." unique_id=269461944]
 layout_mode = 3
 anchors_preset = 0
@@ -246,7 +278,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="PlayerRow" type="Control" parent="ScoreboardLayer/MatchScoreboard" unique_id=521254106]
-modulate = Color(0.9454867, 0.9454867, 0.9454867, 1)
+modulate = Color(0.9991224, 0.9991224, 0.9991224, 1)
 anchors_preset = 0
 offset_top = 44.0
 offset_right = 650.0
@@ -959,6 +991,7 @@ vertical_alignment = 1
 
 [node name="Dartboard" type="Node2D" parent="." unique_id=1745239176]
 position = Vector2(1410, 540)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("3_dartboard")
 
 [node name="ThrowLayer" type="Node2D" parent="." unique_id=565924323]
@@ -980,15 +1013,15 @@ color = Color(0, 0, 0, 0.62)
 [node name="Panel" type="ColorRect" parent="MatchSetupModal" unique_id=405820887]
 layout_mode = 0
 offset_left = 650.0
-offset_top = 286.0
+offset_top = 160.0
 offset_right = 1270.0
-offset_bottom = 794.0
+offset_bottom = 940.0
 color = Color(0.075, 0.08, 0.13, 0.98)
 
 [node name="Frame" type="ColorRect" parent="MatchSetupModal/Panel" unique_id=1071638279]
 layout_mode = 0
 offset_right = 620.0
-offset_bottom = 508.0
+offset_bottom = 780.0
 color = Color(0.015, 0.018, 0.03, 0.28)
 
 [node name="Header" type="ColorRect" parent="MatchSetupModal/Panel" unique_id=1592051553]
@@ -1064,12 +1097,33 @@ offset_right = 566.0
 offset_bottom = 266.0
 theme_override_font_sizes/font_size = 18
 
-[node name="StarterLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=1720035790]
+[node name="CustomTargetLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=1384417125]
 layout_mode = 0
 offset_left = 54.0
 offset_top = 292.0
 offset_right = 260.0
 offset_bottom = 326.0
+theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "CUSTOM FIRST TO"
+vertical_alignment = 1
+
+[node name="CustomTarget" type="SpinBox" parent="MatchSetupModal/Panel" unique_id=1901106183]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 288.0
+offset_right = 566.0
+offset_bottom = 330.0
+min_value = 1.0
+max_value = 50.0
+value = 6.0
+
+[node name="StarterLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=1720035790]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 356.0
+offset_right = 260.0
+offset_bottom = 390.0
 theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
 theme_override_font_sizes/font_size = 18
 text = "THROWS FIRST"
@@ -1078,17 +1132,17 @@ vertical_alignment = 1
 [node name="StarterOption" type="OptionButton" parent="MatchSetupModal/Panel" unique_id=1072416133]
 layout_mode = 0
 offset_left = 310.0
-offset_top = 288.0
+offset_top = 352.0
 offset_right = 566.0
-offset_bottom = 330.0
+offset_bottom = 394.0
 theme_override_font_sizes/font_size = 18
 
 [node name="DoubleInLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=1828417043]
 layout_mode = 0
 offset_left = 54.0
-offset_top = 356.0
+offset_top = 420.0
 offset_right = 260.0
-offset_bottom = 390.0
+offset_bottom = 454.0
 theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
 theme_override_font_sizes/font_size = 18
 text = "ENTRY RULE"
@@ -1097,29 +1151,67 @@ vertical_alignment = 1
 [node name="DoubleInToggle" type="CheckBox" parent="MatchSetupModal/Panel" unique_id=1247957868]
 layout_mode = 0
 offset_left = 310.0
-offset_top = 350.0
+offset_top = 414.0
 offset_right = 566.0
-offset_bottom = 392.0
+offset_bottom = 456.0
 theme_override_font_sizes/font_size = 18
 text = "Double in"
 
 [node name="SetsHint" type="Label" parent="MatchSetupModal/Panel" unique_id=433807980]
 layout_mode = 0
 offset_left = 54.0
-offset_top = 404.0
+offset_top = 612.0
 offset_right = 566.0
-offset_bottom = 438.0
+offset_bottom = 646.0
 theme_override_colors/font_color = Color(0.68, 0.7, 0.86, 1)
 theme_override_font_sizes/font_size = 15
-text = "Sets mode uses best of 3 legs per set."
+text = "Custom first-to applies to legs or sets. Sets use best of 5 legs."
 vertical_alignment = 1
+
+[node name="PlayerDifficultyLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=1375101512]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 484.0
+offset_right = 260.0
+offset_bottom = 518.0
+theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "PLAYER LEVEL"
+vertical_alignment = 1
+
+[node name="PlayerDifficultyOption" type="OptionButton" parent="MatchSetupModal/Panel" unique_id=689363223]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 480.0
+offset_right = 566.0
+offset_bottom = 522.0
+theme_override_font_sizes/font_size = 18
+
+[node name="AIProfileLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=1444965415]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 548.0
+offset_right = 260.0
+offset_bottom = 582.0
+theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "AI LEVEL"
+vertical_alignment = 1
+
+[node name="AIProfileOption" type="OptionButton" parent="MatchSetupModal/Panel" unique_id=1095025459]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 544.0
+offset_right = 566.0
+offset_bottom = 586.0
+theme_override_font_sizes/font_size = 18
 
 [node name="StartButton" type="Button" parent="MatchSetupModal/Panel" unique_id=730719468]
 layout_mode = 0
 offset_left = 352.0
-offset_top = 446.0
+offset_top = 684.0
 offset_right = 566.0
-offset_bottom = 494.0
+offset_bottom = 732.0
 theme_override_font_sizes/font_size = 20
 text = "Start Match"
 
@@ -1139,28 +1231,28 @@ color = Color(0, 0, 0, 0.56)
 
 [node name="Panel" type="ColorRect" parent="StatsSummaryModal" unique_id=1743807444]
 layout_mode = 0
-offset_left = 400.0
-offset_top = 144.0
-offset_right = 1520.0
-offset_bottom = 936.0
+offset_left = 280.0
+offset_top = 118.0
+offset_right = 1640.0
+offset_bottom = 962.0
 color = Color(0.075, 0.08, 0.13, 0.985)
 
 [node name="Frame" type="ColorRect" parent="StatsSummaryModal/Panel" unique_id=403691596]
 layout_mode = 0
-offset_right = 1120.0
-offset_bottom = 792.0
+offset_right = 1360.0
+offset_bottom = 844.0
 color = Color(0.015, 0.018, 0.03, 0.32)
 
 [node name="Header" type="ColorRect" parent="StatsSummaryModal/Panel" unique_id=1068060417]
 layout_mode = 0
-offset_right = 1120.0
+offset_right = 1360.0
 offset_bottom = 58.0
 color = Color(0.72, 0.02, 0.06, 1)
 
 [node name="Title" type="Label" parent="StatsSummaryModal/Panel/Header" unique_id=1847484932]
 layout_mode = 0
 offset_left = 24.0
-offset_right = 1096.0
+offset_right = 1336.0
 offset_bottom = 58.0
 theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
 theme_override_font_sizes/font_size = 26
@@ -1171,7 +1263,7 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 34.0
 offset_top = 84.0
-offset_right = 1086.0
+offset_right = 1326.0
 offset_bottom = 112.0
 theme_override_colors/font_color = Color(0.72, 0.74, 0.95, 1)
 theme_override_font_sizes/font_size = 16
@@ -1182,16 +1274,18 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 34.0
 offset_top = 120.0
-offset_right = 1086.0
-offset_bottom = 440.0
+offset_right = 842.0
+offset_bottom = 400.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
 columns = 3
 
 [node name="BreakdownHeader" type="Label" parent="StatsSummaryModal/Panel" unique_id=225555390]
 layout_mode = 0
 offset_left = 34.0
-offset_top = 456.0
-offset_right = 1086.0
-offset_bottom = 484.0
+offset_top = 420.0
+offset_right = 1326.0
+offset_bottom = 448.0
 theme_override_colors/font_color = Color(0.72, 0.74, 0.95, 1)
 theme_override_font_sizes/font_size = 16
 text = "LEG BREAKDOWN"
@@ -1200,20 +1294,22 @@ vertical_alignment = 1
 [node name="BreakdownScroll" type="ScrollContainer" parent="StatsSummaryModal/Panel" unique_id=1870910234]
 layout_mode = 0
 offset_left = 34.0
-offset_top = 492.0
-offset_right = 1086.0
-offset_bottom = 718.0
+offset_top = 456.0
+offset_right = 1326.0
+offset_bottom = 772.0
 
 [node name="BreakdownTable" type="GridContainer" parent="StatsSummaryModal/Panel/BreakdownScroll" unique_id=1030755061]
-custom_minimum_size = Vector2(1044, 320)
+custom_minimum_size = Vector2(1278, 286)
 layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
 columns = 6
 
 [node name="ContinueButton" type="Button" parent="StatsSummaryModal/Panel" unique_id=1078580307]
 layout_mode = 0
-offset_left = 872.0
-offset_top = 736.0
-offset_right = 1086.0
-offset_bottom = 774.0
+offset_left = 1112.0
+offset_top = 790.0
+offset_right = 1326.0
+offset_bottom = 828.0
 theme_override_font_sizes/font_size = 20
 text = "Close"

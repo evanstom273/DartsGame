@@ -27,11 +27,19 @@ const WIRE = Color(0.82, 0.80, 0.72)
 const NUMBER_COLOR = Color(0.95, 0.93, 0.84)
 const NUMBER_SHADOW = Color(0.0, 0.0, 0.0, 0.65)
 
+## Visual scale for the dartboard node. ThrowController should use the same value for honest hit areas.
+@export var board_scale: float = 0.8:
+	set(value):
+		board_scale = maxf(0.1, value)
+		scale = Vector2.ONE * board_scale
+		queue_redraw()
+
 var _font: Font
 
 
 func _ready() -> void:
 	_font = ThemeDB.fallback_font
+	scale = Vector2.ONE * board_scale
 	queue_redraw()
 
 

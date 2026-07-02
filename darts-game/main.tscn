@@ -1,11 +1,14 @@
-[gd_scene format=3 uid="uid://bynnpkvf0n4ic"]
+[gd_scene format=3 uid="uid://bk567ygata0nj"]
 
-[ext_resource type="Script" uid="uid://lwq5c8ip80v3" path="res://scripts/broadcast_backdrop.gd" id="1_backdrop"]
-[ext_resource type="Script" uid="uid://cxqogpxam45nw" path="res://scripts/scoreboard_presenter.gd" id="2_scoreboard"]
-[ext_resource type="Script" uid="uid://c67dacommm7c0" path="res://scripts/dartboard.gd" id="3_dartboard"]
-[ext_resource type="Script" uid="uid://822shs6g2dpo" path="res://scripts/throw_controller.gd" id="4_throw"]
-[ext_resource type="Script" uid="uid://ckxj7mhvrpk11" path="res://scripts/match_setup_modal.gd" id="5_setup"]
-[ext_resource type="Script" uid="uid://dertn2kbn7mkg" path="res://scripts/stats_summary_modal.gd" id="6_stats"]
+[ext_resource type="Script" path="res://scripts/ui/broadcast_backdrop.gd" id="1_backdrop"]
+[ext_resource type="Script" path="res://scripts/ui/scoreboard_presenter.gd" id="2_scoreboard"]
+[ext_resource type="Script" path="res://scripts/gameplay/dartboard.gd" id="3_dartboard"]
+[ext_resource type="Script" path="res://scripts/gameplay/throw_controller.gd" id="4_throw"]
+[ext_resource type="Script" path="res://scripts/ui/match_setup_modal.gd" id="5_setup"]
+[ext_resource type="Script" path="res://scripts/ui/stats_summary_modal.gd" id="6_stats"]
+[ext_resource type="Script" path="res://scripts/gameplay/tournament_controller.gd" id="7_tournament"]
+[ext_resource type="Script" path="res://scripts/ui/mobile_fullscreen_layout.gd" id="8_mobile_layout"]
+[ext_resource type="Script" path="res://scripts/ui/mobile_pause_overlay.gd" id="9_mobile_pause"]
 
 [node name="Main" type="Node2D" unique_id=159788572]
 
@@ -278,7 +281,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="PlayerRow" type="Control" parent="ScoreboardLayer/MatchScoreboard" unique_id=521254106]
-modulate = Color(0.9991224, 0.9991224, 0.9991224, 1)
+modulate = Color(0.9456433, 0.9456433, 0.9456433, 1)
 anchors_preset = 0
 offset_top = 44.0
 offset_right = 650.0
@@ -332,9 +335,18 @@ text = ">"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Flag" type="TextureRect" parent="ScoreboardLayer/MatchScoreboard/PlayerRow"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 18.0
+offset_right = 106.0
+offset_bottom = 36.0
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Name" type="Label" parent="ScoreboardLayer/MatchScoreboard/PlayerRow" unique_id=682010275]
 layout_mode = 0
-offset_left = 80.0
+offset_left = 114.0
 offset_right = 318.0
 offset_bottom = 54.0
 theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
@@ -452,9 +464,18 @@ text = ">"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Flag" type="TextureRect" parent="ScoreboardLayer/MatchScoreboard/AIRow"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 18.0
+offset_right = 106.0
+offset_bottom = 36.0
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Name" type="Label" parent="ScoreboardLayer/MatchScoreboard/AIRow" unique_id=1868710893]
 layout_mode = 0
-offset_left = 80.0
+offset_left = 114.0
 offset_right = 318.0
 offset_bottom = 54.0
 theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
@@ -1168,50 +1189,12 @@ theme_override_font_sizes/font_size = 15
 text = "Custom first-to applies to legs or sets. Sets use best of 5 legs."
 vertical_alignment = 1
 
-[node name="PlayerDifficultyLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=1375101512]
-layout_mode = 0
-offset_left = 54.0
-offset_top = 484.0
-offset_right = 260.0
-offset_bottom = 518.0
-theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
-theme_override_font_sizes/font_size = 18
-text = "PLAYER LEVEL"
-vertical_alignment = 1
-
-[node name="PlayerDifficultyOption" type="OptionButton" parent="MatchSetupModal/Panel" unique_id=689363223]
-layout_mode = 0
-offset_left = 310.0
-offset_top = 480.0
-offset_right = 566.0
-offset_bottom = 522.0
-theme_override_font_sizes/font_size = 18
-
-[node name="AIProfileLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=1444965415]
-layout_mode = 0
-offset_left = 54.0
-offset_top = 548.0
-offset_right = 260.0
-offset_bottom = 582.0
-theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
-theme_override_font_sizes/font_size = 18
-text = "AI LEVEL"
-vertical_alignment = 1
-
-[node name="AIProfileOption" type="OptionButton" parent="MatchSetupModal/Panel" unique_id=1095025459]
-layout_mode = 0
-offset_left = 310.0
-offset_top = 544.0
-offset_right = 566.0
-offset_bottom = 586.0
-theme_override_font_sizes/font_size = 18
-
 [node name="StartButton" type="Button" parent="MatchSetupModal/Panel" unique_id=730719468]
 layout_mode = 0
 offset_left = 352.0
-offset_top = 684.0
+offset_top = 548.0
 offset_right = 566.0
-offset_bottom = 732.0
+offset_bottom = 596.0
 theme_override_font_sizes/font_size = 20
 text = "Start Match"
 
@@ -1313,3 +1296,21 @@ offset_right = 1326.0
 offset_bottom = 828.0
 theme_override_font_sizes/font_size = 20
 text = "Close"
+
+[node name="TournamentScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("7_tournament")
+
+[node name="MobileFullscreenLayout" type="Node" parent="."]
+script = ExtResource("8_mobile_layout")
+
+[node name="MobilePauseOverlay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("9_mobile_pause")

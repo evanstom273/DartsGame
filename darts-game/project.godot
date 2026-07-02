@@ -13,11 +13,11 @@ config_version=5
 config/name="DartsGame"
 run/main_scene="uid://bynnpkvf0n4ic"
 config/features=PackedStringArray("4.7", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://assets/icons/icon.svg"
 
 [autoload]
 
-WindowManager="*res://scripts/window_manager.gd"
+WindowManager="*res://scripts/core/window_manager.gd"
 
 [display]
 
@@ -36,3 +36,4 @@ window/stretch/aspect="expand"
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

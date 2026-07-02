@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CharacterResource" format=3 uid="uid://opgnccxkwg62"]
+
+[ext_resource type="Script" uid="uid://druynf4mitdop" path="res://scripts/resources/character_data.gd" id="1_character"]
+
+[resource]
+script = ExtResource("1_character")
+display_name = "Amateur"
+average_min = 12.0
+average_max = 30.0
+variance = 7.0
+nerve = 0.28
+treble_consistency = 0.06
+double_consistency = 0.08
+single_consistency = 0.54
+preferred_checkout_doubles = Array[String](["D20", "D16", "D10"])
+maximum_appetite = 0.35
+heavy_scoring_bias = 0.45
+opening_phase_bias = 0.55
+nine_darter_appetite = 0.15
+vertical_speed = 760.0
+horizontal_speed = 880.0
+visible_wobble_pixels = 2.2
+line_chaos_strength = 2.6
+post_lock_drift_pixels = 12.0
+post_lock_drift_duration = 0.22
+fatigue_per_dart = 0.62
+control_skill = 0.08
+pressure = 0.62

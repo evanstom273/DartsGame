@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="CharacterResource" format=3 uid="uid://btd2tg8nwgby3"]
+
+[ext_resource type="Script" uid="uid://druynf4mitdop" path="res://scripts/resources/character_data.gd" id="1_character"]
+
+[resource]
+script = ExtResource("1_character")
+display_name = "County"
+average_min = 30.0
+average_max = 60.0
+nerve = 0.4
+treble_consistency = 0.16
+double_consistency = 0.16
+single_consistency = 0.68
+maximum_appetite = 0.65
+heavy_scoring_bias = 0.75
+opening_phase_bias = 0.8
+nine_darter_appetite = 0.35
+vertical_speed = 680.0
+horizontal_speed = 790.0
+visible_wobble_pixels = 1.8
+line_chaos_strength = 2.1
+post_lock_drift_pixels = 9.0
+post_lock_drift_duration = 0.18
+fatigue_per_dart = 0.5
+control_skill = 0.18
+pressure = 0.52

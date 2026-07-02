@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="CharacterResource" format=3 uid="uid://dxlau4n7utcro"]
+
+[ext_resource type="Script" uid="uid://druynf4mitdop" path="res://scripts/resources/character_data.gd" id="1_character"]
+
+[resource]
+script = ExtResource("1_character")
+display_name = "World Class"
+average_min = 80.0
+average_max = 105.0
+variance = 7.0
+nerve = 0.78
+treble_consistency = 0.64
+double_consistency = 0.48
+single_consistency = 0.92
+preferred_scoring_targets = Array[String](["T20", "T19", "T18", "T17"])
+preferred_checkout_doubles = Array[String](["D20", "D16", "D18", "D12", "D10", "D8"])
+maximum_appetite = 1.3
+heavy_scoring_bias = 1.2
+opening_phase_bias = 1.25
+preferred_checkout_routes = {
+"121": Array[String](["T17", "T20", "D5"])
+}
+vertical_speed = 540.0
+horizontal_speed = 630.0
+visible_wobble_pixels = 1.2
+line_chaos_strength = 1.25
+post_lock_drift_pixels = 4.0
+post_lock_drift_duration = 0.15
+fatigue_per_dart = 0.28
+control_skill = 0.66
+pressure = 0.22

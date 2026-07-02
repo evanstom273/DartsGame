@@ -1,0 +1,1316 @@
+[gd_scene format=3 uid="uid://bynnpkvf0n4ic"]
+
+[ext_resource type="Script" uid="uid://lwq5c8ip80v3" path="res://scripts/ui/broadcast_backdrop.gd" id="1_backdrop"]
+[ext_resource type="Script" uid="uid://cxqogpxam45nw" path="res://scripts/ui/scoreboard_presenter.gd" id="2_scoreboard"]
+[ext_resource type="Script" uid="uid://c67dacommm7c0" path="res://scripts/gameplay/dartboard.gd" id="3_dartboard"]
+[ext_resource type="Script" uid="uid://822shs6g2dpo" path="res://scripts/gameplay/throw_controller.gd" id="4_throw"]
+[ext_resource type="Script" uid="uid://ckxj7mhvrpk11" path="res://scripts/ui/match_setup_modal.gd" id="5_setup"]
+[ext_resource type="Script" uid="uid://dertn2kbn7mkg" path="res://scripts/ui/stats_summary_modal.gd" id="6_stats"]
+[ext_resource type="Script" uid="uid://b4r5bv4ejfj6b" path="res://scripts/gameplay/tournament_controller.gd" id="7_tournament"]
+[ext_resource type="Script" path="res://scripts/ui/mobile_fullscreen_layout.gd" id="8_mobile_layout"]
+[ext_resource type="Script" path="res://scripts/ui/mobile_pause_overlay.gd" id="9_mobile_pause"]
+
+[node name="Main" type="Node2D" unique_id=159788572]
+
+[node name="BroadcastBackdrop" type="Node2D" parent="." unique_id=1215522892]
+script = ExtResource("1_backdrop")
+
+[node name="BoardCameraZone" type="Control" parent="." unique_id=840761693]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ScoreboardFalloff" type="ColorRect" parent="BoardCameraZone" unique_id=47168612]
+layout_mode = 0
+offset_left = 858.0
+offset_right = 906.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.16)
+
+[node name="DividerGlow" type="ColorRect" parent="BoardCameraZone" unique_id=2019235121]
+layout_mode = 0
+offset_left = 900.0
+offset_right = 940.0
+offset_bottom = 1080.0
+color = Color(0.36, 0.32, 0.82, 0.065)
+
+[node name="DividerLine" type="ColorRect" parent="BoardCameraZone" unique_id=2055363808]
+layout_mode = 0
+offset_left = 900.0
+offset_right = 902.0
+offset_bottom = 1080.0
+color = Color(0.68, 0.72, 0.96, 0.22)
+
+[node name="BoardCameraTint" type="ColorRect" parent="BoardCameraZone" unique_id=1904780615]
+layout_mode = 0
+offset_left = 902.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.18, 0.14, 0.44, 0.035)
+
+[node name="BoardFrameTop" type="ColorRect" parent="BoardCameraZone" unique_id=2072764294]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 112.0
+offset_right = 1824.0
+offset_bottom = 114.0
+color = Color(0.58, 0.62, 1, 0.11)
+
+[node name="BoardFrameBottom" type="ColorRect" parent="BoardCameraZone" unique_id=665704537]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 966.0
+offset_right = 1824.0
+offset_bottom = 968.0
+color = Color(0.58, 0.62, 1, 0.08)
+
+[node name="BoardFrameLeft" type="ColorRect" parent="BoardCameraZone" unique_id=49462712]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 112.0
+offset_right = 998.0
+offset_bottom = 968.0
+color = Color(0.58, 0.62, 1, 0.07)
+
+[node name="BoardFrameRight" type="ColorRect" parent="BoardCameraZone" unique_id=644237022]
+layout_mode = 0
+offset_left = 1822.0
+offset_top = 112.0
+offset_right = 1824.0
+offset_bottom = 968.0
+color = Color(0.58, 0.62, 1, 0.07)
+
+[node name="ScoreboardLayer" type="Control" parent="." unique_id=269461944]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("2_scoreboard")
+
+[node name="CheckoutRoute" type="Control" parent="ScoreboardLayer" unique_id=600686827]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 296.0
+offset_right = 200.0
+offset_bottom = 380.0
+
+[node name="TopRouteTile1" type="ColorRect" parent="ScoreboardLayer/CheckoutRoute" unique_id=820585559]
+visible = false
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 30.0
+color = Color(0.2, 0.205, 0.34, 1)
+
+[node name="TopRouteTile1Text" type="Label" parent="ScoreboardLayer/CheckoutRoute/TopRouteTile1" unique_id=1155676515]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.96, 0.95, 0.89, 1)
+theme_override_font_sizes/font_size = 18
+text = "T20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopRouteTile2" type="ColorRect" parent="ScoreboardLayer/CheckoutRoute" unique_id=1182003241]
+visible = false
+layout_mode = 0
+offset_left = 64.0
+offset_right = 116.0
+offset_bottom = 30.0
+color = Color(0.2, 0.205, 0.34, 1)
+
+[node name="TopRouteTile2Text" type="Label" parent="ScoreboardLayer/CheckoutRoute/TopRouteTile2" unique_id=1002056801]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.96, 0.95, 0.89, 1)
+theme_override_font_sizes/font_size = 18
+text = "T19"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopTile" type="ColorRect" parent="ScoreboardLayer/CheckoutRoute" unique_id=1272894454]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 180.0
+offset_bottom = 30.0
+color = Color(0.2, 0.205, 0.34, 1)
+
+[node name="TopTileText" type="Label" parent="ScoreboardLayer/CheckoutRoute/TopTile" unique_id=493738331]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.96, 0.95, 0.89, 1)
+theme_override_font_sizes/font_size = 18
+text = "D20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RouteTile1" type="ColorRect" parent="ScoreboardLayer/CheckoutRoute" unique_id=1455466006]
+layout_mode = 0
+offset_top = 54.0
+offset_right = 52.0
+offset_bottom = 84.0
+color = Color(0.2, 0.205, 0.34, 1)
+
+[node name="RouteTile1Text" type="Label" parent="ScoreboardLayer/CheckoutRoute/RouteTile1" unique_id=1360664166]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.96, 0.95, 0.89, 1)
+theme_override_font_sizes/font_size = 18
+text = "T20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RouteTile2" type="ColorRect" parent="ScoreboardLayer/CheckoutRoute" unique_id=1695414687]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 54.0
+offset_right = 116.0
+offset_bottom = 84.0
+color = Color(0.2, 0.205, 0.34, 1)
+
+[node name="RouteTile2Text" type="Label" parent="ScoreboardLayer/CheckoutRoute/RouteTile2" unique_id=803219760]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.96, 0.95, 0.89, 1)
+theme_override_font_sizes/font_size = 18
+text = "T19"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RouteTile3" type="ColorRect" parent="ScoreboardLayer/CheckoutRoute" unique_id=181188648]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 54.0
+offset_right = 180.0
+offset_bottom = 84.0
+color = Color(0.2, 0.205, 0.34, 1)
+
+[node name="RouteTile3Text" type="Label" parent="ScoreboardLayer/CheckoutRoute/RouteTile3" unique_id=1769748990]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.96, 0.95, 0.89, 1)
+theme_override_font_sizes/font_size = 18
+text = "D18"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MatchScoreboard" type="Control" parent="ScoreboardLayer" unique_id=214800688]
+anchors_preset = 0
+offset_left = 208.0
+offset_top = 240.0
+offset_right = 858.0
+offset_bottom = 428.0
+
+[node name="Shadow" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard" unique_id=554509800]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 658.0
+offset_bottom = 198.0
+color = Color(0, 0, 0, 0.35)
+
+[node name="Frame" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard" unique_id=1939986654]
+layout_mode = 0
+offset_right = 650.0
+offset_bottom = 188.0
+color = Color(0.012, 0.014, 0.018, 1)
+
+[node name="Panel" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard" unique_id=1910782633]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 646.0
+offset_bottom = 184.0
+color = Color(0.075, 0.08, 0.12, 0.96)
+
+[node name="Header" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard" unique_id=1589234056]
+layout_mode = 0
+offset_right = 650.0
+offset_bottom = 44.0
+color = Color(0.72, 0.02, 0.06, 1)
+
+[node name="MatchTitle" type="Label" parent="ScoreboardLayer/MatchScoreboard/Header" unique_id=1395822821]
+layout_mode = 0
+offset_left = 18.0
+offset_right = 318.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 22
+text = "Round 1 - First to 3"
+vertical_alignment = 1
+
+[node name="SetsHeader" type="Label" parent="ScoreboardLayer/MatchScoreboard/Header" unique_id=920209250]
+layout_mode = 0
+offset_left = 340.0
+offset_right = 418.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 19
+text = "Sets"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LegsHeader" type="Label" parent="ScoreboardLayer/MatchScoreboard/Header" unique_id=8764367]
+layout_mode = 0
+offset_left = 418.0
+offset_right = 496.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 19
+text = "Legs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreHeader" type="Label" parent="ScoreboardLayer/MatchScoreboard/Header" unique_id=1430769199]
+layout_mode = 0
+offset_left = 510.0
+offset_right = 630.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 19
+text = "Score"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PlayerRow" type="Control" parent="ScoreboardLayer/MatchScoreboard" unique_id=521254106]
+modulate = Color(0.9673077, 0.9673077, 0.9673077, 1)
+anchors_preset = 0
+offset_top = 44.0
+offset_right = 650.0
+offset_bottom = 98.0
+
+[node name="Background" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard/PlayerRow" unique_id=1603423571]
+layout_mode = 0
+offset_right = 650.0
+offset_bottom = 54.0
+color = Color(0.13, 0.135, 0.2, 1)
+
+[node name="ActiveStrip" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard/PlayerRow" unique_id=806420961]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 54.0
+color = Color(0.86, 0.04, 0.12, 1)
+
+[node name="FirstThrowIcon" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard/PlayerRow" unique_id=1605837721]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = 40.0
+offset_bottom = 39.0
+color = Color(0, 0.42, 0.2, 1)
+
+[node name="FirstThrowText" type="Label" parent="ScoreboardLayer/MatchScoreboard/PlayerRow/FirstThrowIcon" unique_id=1611547314]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentThrowIcon" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard/PlayerRow" unique_id=493921412]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 15.0
+offset_right = 68.0
+offset_bottom = 39.0
+color = Color(0.95, 0.92, 0.78, 1)
+
+[node name="CurrentThrowText" type="Label" parent="ScoreboardLayer/MatchScoreboard/PlayerRow/CurrentThrowIcon" unique_id=280165717]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.035, 0.036, 0.037, 1)
+theme_override_font_sizes/font_size = 17
+text = ">"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Flag" type="TextureRect" parent="ScoreboardLayer/MatchScoreboard/PlayerRow" unique_id=2056789153]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 18.0
+offset_right = 106.0
+offset_bottom = 36.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="ScoreboardLayer/MatchScoreboard/PlayerRow" unique_id=682010275]
+layout_mode = 0
+offset_left = 114.0
+offset_right = 318.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 26
+text = "PLAYER"
+vertical_alignment = 1
+
+[node name="Sets" type="Label" parent="ScoreboardLayer/MatchScoreboard/PlayerRow" unique_id=247355214]
+layout_mode = 0
+offset_left = 340.0
+offset_right = 418.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 25
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Legs" type="Label" parent="ScoreboardLayer/MatchScoreboard/PlayerRow" unique_id=926430158]
+layout_mode = 0
+offset_left = 418.0
+offset_right = 496.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 25
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NineDartBadge" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard/PlayerRow" unique_id=585463686]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 508.0
+offset_top = 12.0
+offset_right = 536.0
+offset_bottom = 42.0
+color = Color(0.96, 0.72, 0.18, 1)
+
+[node name="NineDartText" type="Label" parent="ScoreboardLayer/MatchScoreboard/PlayerRow/NineDartBadge" unique_id=1318812488]
+layout_mode = 0
+offset_right = 28.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.035, 0.036, 0.037, 1)
+theme_override_font_sizes/font_size = 23
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="ScoreboardLayer/MatchScoreboard/PlayerRow" unique_id=358186814]
+layout_mode = 0
+offset_left = 542.0
+offset_right = 630.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 30
+text = "501"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AIRow" type="Control" parent="ScoreboardLayer/MatchScoreboard" unique_id=271038654]
+modulate = Color(0.74, 0.76, 0.86, 1)
+anchors_preset = 0
+offset_top = 98.0
+offset_right = 650.0
+offset_bottom = 152.0
+
+[node name="Background" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard/AIRow" unique_id=121526505]
+layout_mode = 0
+offset_right = 650.0
+offset_bottom = 54.0
+color = Color(0.07, 0.075, 0.12, 1)
+
+[node name="ActiveStrip" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard/AIRow" unique_id=1168966239]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 54.0
+color = Color(0.18, 0.2, 0.32, 1)
+
+[node name="FirstThrowIcon" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard/AIRow" unique_id=527315325]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = 40.0
+offset_bottom = 39.0
+color = Color(0, 0.42, 0.2, 1)
+
+[node name="FirstThrowText" type="Label" parent="ScoreboardLayer/MatchScoreboard/AIRow/FirstThrowIcon" unique_id=750481639]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentThrowIcon" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard/AIRow" unique_id=1890723107]
+visible = false
+layout_mode = 0
+offset_left = 44.0
+offset_top = 15.0
+offset_right = 68.0
+offset_bottom = 39.0
+color = Color(0.95, 0.92, 0.78, 1)
+
+[node name="CurrentThrowText" type="Label" parent="ScoreboardLayer/MatchScoreboard/AIRow/CurrentThrowIcon" unique_id=2036851831]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.035, 0.036, 0.037, 1)
+theme_override_font_sizes/font_size = 17
+text = ">"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Flag" type="TextureRect" parent="ScoreboardLayer/MatchScoreboard/AIRow" unique_id=952999794]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 18.0
+offset_right = 106.0
+offset_bottom = 36.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="ScoreboardLayer/MatchScoreboard/AIRow" unique_id=1868710893]
+layout_mode = 0
+offset_left = 114.0
+offset_right = 318.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 26
+text = "AI"
+vertical_alignment = 1
+
+[node name="Sets" type="Label" parent="ScoreboardLayer/MatchScoreboard/AIRow" unique_id=365208367]
+layout_mode = 0
+offset_left = 340.0
+offset_right = 418.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 25
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Legs" type="Label" parent="ScoreboardLayer/MatchScoreboard/AIRow" unique_id=132118974]
+layout_mode = 0
+offset_left = 418.0
+offset_right = 496.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 25
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NineDartBadge" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard/AIRow" unique_id=957346048]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 508.0
+offset_top = 12.0
+offset_right = 536.0
+offset_bottom = 42.0
+color = Color(0.96, 0.72, 0.18, 1)
+
+[node name="NineDartText" type="Label" parent="ScoreboardLayer/MatchScoreboard/AIRow/NineDartBadge" unique_id=1733756487]
+layout_mode = 0
+offset_right = 28.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.035, 0.036, 0.037, 1)
+theme_override_font_sizes/font_size = 23
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="ScoreboardLayer/MatchScoreboard/AIRow" unique_id=43877865]
+layout_mode = 0
+offset_left = 542.0
+offset_right = 630.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 30
+text = "501"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="EventBar" type="ColorRect" parent="ScoreboardLayer/MatchScoreboard" unique_id=1911544939]
+layout_mode = 0
+offset_top = 152.0
+offset_right = 650.0
+offset_bottom = 188.0
+color = Color(0.18, 0.19, 0.31, 1)
+
+[node name="EventName" type="Label" parent="ScoreboardLayer/MatchScoreboard/EventBar" unique_id=1128203798]
+layout_mode = 0
+offset_left = 18.0
+offset_right = 420.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 18
+text = "DARTS GAME"
+vertical_alignment = 1
+
+[node name="ThrowLegend" type="Label" parent="ScoreboardLayer/MatchScoreboard/EventBar" unique_id=271755983]
+layout_mode = 0
+offset_left = 430.0
+offset_right = 630.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.72, 0.74, 0.95, 1)
+theme_override_font_sizes/font_size = 13
+text = "F FIRST    > THROWING"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StatsPanel" type="Control" parent="ScoreboardLayer" unique_id=1462900952]
+anchors_preset = 0
+offset_left = 208.0
+offset_top = 462.0
+offset_right = 858.0
+offset_bottom = 814.0
+
+[node name="Shadow" type="ColorRect" parent="ScoreboardLayer/StatsPanel" unique_id=656684854]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 658.0
+offset_bottom = 362.0
+color = Color(0, 0, 0, 0.32)
+
+[node name="Frame" type="ColorRect" parent="ScoreboardLayer/StatsPanel" unique_id=1465730466]
+layout_mode = 0
+offset_right = 650.0
+offset_bottom = 352.0
+color = Color(0.012, 0.014, 0.018, 1)
+
+[node name="Panel" type="ColorRect" parent="ScoreboardLayer/StatsPanel" unique_id=2015635817]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 646.0
+offset_bottom = 348.0
+color = Color(0.075, 0.08, 0.12, 0.94)
+
+[node name="CurrentLeg" type="Control" parent="ScoreboardLayer/StatsPanel" unique_id=1335608084]
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 634.0
+offset_bottom = 124.0
+
+[node name="Background" type="ColorRect" parent="ScoreboardLayer/StatsPanel/CurrentLeg" unique_id=807002158]
+layout_mode = 0
+offset_right = 618.0
+offset_bottom = 108.0
+color = Color(0.05, 0.054, 0.088, 1)
+
+[node name="Header" type="ColorRect" parent="ScoreboardLayer/StatsPanel/CurrentLeg" unique_id=2086360800]
+layout_mode = 0
+offset_right = 618.0
+offset_bottom = 28.0
+color = Color(0.01, 0.012, 0.016, 1)
+
+[node name="Title" type="Label" parent="ScoreboardLayer/StatsPanel/CurrentLeg/Header" unique_id=1826471985]
+layout_mode = 0
+offset_left = 14.0
+offset_right = 230.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.72, 0.74, 0.95, 1)
+theme_override_font_sizes/font_size = 15
+text = "CURRENT LEG"
+vertical_alignment = 1
+
+[node name="VisitHeaders" type="Label" parent="ScoreboardLayer/StatsPanel/CurrentLeg/Header" unique_id=1675069209]
+layout_mode = 0
+offset_left = 252.0
+offset_right = 600.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.68, 0.69, 0.66, 1)
+theme_override_font_sizes/font_size = 14
+text = "V1        V2        V3        V4        V5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerLabel" type="Label" parent="ScoreboardLayer/StatsPanel/CurrentLeg" unique_id=1395747618]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 34.0
+offset_right = 210.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 17
+text = "PLAYER"
+vertical_alignment = 1
+
+[node name="PlayerVisits" type="Label" parent="ScoreboardLayer/StatsPanel/CurrentLeg" unique_id=1433991688]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 34.0
+offset_right = 600.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 17
+text = "-         -         -         -         -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AILabel" type="Label" parent="ScoreboardLayer/StatsPanel/CurrentLeg" unique_id=751543506]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 68.0
+offset_right = 210.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 17
+text = "AI"
+vertical_alignment = 1
+
+[node name="AIVisits" type="Label" parent="ScoreboardLayer/StatsPanel/CurrentLeg" unique_id=495703131]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 68.0
+offset_right = 600.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 17
+text = "-         -         -         -         -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MatchStats" type="Control" parent="ScoreboardLayer/StatsPanel" unique_id=157680128]
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 138.0
+offset_right = 634.0
+offset_bottom = 344.0
+
+[node name="Background" type="ColorRect" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1921411443]
+layout_mode = 0
+offset_right = 618.0
+offset_bottom = 206.0
+color = Color(0.05, 0.054, 0.088, 1)
+
+[node name="Header" type="ColorRect" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=844704192]
+layout_mode = 0
+offset_right = 618.0
+offset_bottom = 28.0
+color = Color(0.01, 0.012, 0.016, 1)
+
+[node name="Title" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats/Header" unique_id=2051509118]
+layout_mode = 0
+offset_left = 14.0
+offset_right = 210.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.72, 0.74, 0.95, 1)
+theme_override_font_sizes/font_size = 15
+text = "MATCH STATS"
+vertical_alignment = 1
+
+[node name="PlayerColumn" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats/Header" unique_id=503537504]
+layout_mode = 0
+offset_left = 350.0
+offset_right = 456.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.68, 0.69, 0.66, 1)
+theme_override_font_sizes/font_size = 14
+text = "PLAYER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AIColumn" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats/Header" unique_id=1107883072]
+layout_mode = 0
+offset_left = 486.0
+offset_right = 592.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.68, 0.69, 0.66, 1)
+theme_override_font_sizes/font_size = 14
+text = "AI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AverageLabel" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=459129585]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 32.0
+offset_right = 270.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 14
+text = "3 DART AVG"
+vertical_alignment = 1
+
+[node name="AveragePlayer" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1265178558]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 32.0
+offset_right = 456.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AverageAI" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1366021916]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 32.0
+offset_right = 592.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FirstNineLabel" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=301187350]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 54.0
+offset_right = 270.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 14
+text = "FIRST 9 AVG"
+vertical_alignment = 1
+
+[node name="FirstNinePlayer" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1119803856]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 54.0
+offset_right = 456.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FirstNineAI" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1619416538]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 54.0
+offset_right = 592.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckoutLabel" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=155618185]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 76.0
+offset_right = 270.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 14
+text = "CHECKOUT %"
+vertical_alignment = 1
+
+[node name="CheckoutPlayer" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=467243504]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 76.0
+offset_right = 456.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0% (0/0)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckoutAI" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1672956925]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 76.0
+offset_right = 592.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0% (0/0)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighCheckoutLabel" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=2105305494]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 98.0
+offset_right = 270.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 14
+text = "HIGH CHECKOUT"
+vertical_alignment = 1
+
+[node name="HighCheckoutPlayer" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=2075064211]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 98.0
+offset_right = 456.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighCheckoutAI" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1231420346]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 98.0
+offset_right = 592.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TonPlusLabel" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1519511231]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 120.0
+offset_right = 270.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 14
+text = "100+"
+vertical_alignment = 1
+
+[node name="TonPlusPlayer" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=987195528]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 120.0
+offset_right = 456.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TonPlusAI" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1712685348]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 120.0
+offset_right = 592.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OneFortyPlusLabel" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=860363387]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 142.0
+offset_right = 270.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 14
+text = "140+"
+vertical_alignment = 1
+
+[node name="OneFortyPlusPlayer" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1978804892]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 142.0
+offset_right = 456.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OneFortyPlusAI" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=2130382059]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 142.0
+offset_right = 592.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OneEightiesLabel" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1062062794]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 164.0
+offset_right = 270.0
+offset_bottom = 184.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 14
+text = "180S"
+vertical_alignment = 1
+
+[node name="OneEightiesPlayer" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1459103765]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 164.0
+offset_right = 456.0
+offset_bottom = 184.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OneEightiesAI" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1227498840]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 164.0
+offset_right = 592.0
+offset_bottom = 184.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DartsThrownLabel" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1717911917]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 184.0
+offset_right = 270.0
+offset_bottom = 204.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 14
+text = "DARTS THROWN"
+vertical_alignment = 1
+
+[node name="DartsThrownPlayer" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=1353418387]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 184.0
+offset_right = 456.0
+offset_bottom = 204.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DartsThrownAI" type="Label" parent="ScoreboardLayer/StatsPanel/MatchStats" unique_id=2044260514]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 184.0
+offset_right = 592.0
+offset_bottom = 204.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dartboard" type="Node2D" parent="." unique_id=1745239176]
+position = Vector2(1410, 540)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("3_dartboard")
+
+[node name="ThrowLayer" type="Node2D" parent="." unique_id=565924323]
+script = ExtResource("4_throw")
+
+[node name="MatchSetupModal" type="Control" parent="." unique_id=1072186094]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("5_setup")
+
+[node name="Backdrop" type="ColorRect" parent="MatchSetupModal" unique_id=256462651]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.62)
+
+[node name="Panel" type="ColorRect" parent="MatchSetupModal" unique_id=405820887]
+layout_mode = 0
+offset_left = 650.0
+offset_top = 160.0
+offset_right = 1270.0
+offset_bottom = 940.0
+color = Color(0.075, 0.08, 0.13, 0.98)
+
+[node name="Frame" type="ColorRect" parent="MatchSetupModal/Panel" unique_id=1071638279]
+layout_mode = 0
+offset_right = 620.0
+offset_bottom = 780.0
+color = Color(0.015, 0.018, 0.03, 0.28)
+
+[node name="Header" type="ColorRect" parent="MatchSetupModal/Panel" unique_id=1592051553]
+layout_mode = 0
+offset_right = 620.0
+offset_bottom = 58.0
+color = Color(0.72, 0.02, 0.06, 1)
+
+[node name="Title" type="Label" parent="MatchSetupModal/Panel/Header" unique_id=1879552878]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 596.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 26
+text = "MATCH SETUP"
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=973775138]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 100.0
+offset_right = 260.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "STARTING SCORE"
+vertical_alignment = 1
+
+[node name="ScoreOption" type="OptionButton" parent="MatchSetupModal/Panel" unique_id=851721509]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 96.0
+offset_right = 566.0
+offset_bottom = 138.0
+theme_override_font_sizes/font_size = 18
+
+[node name="FormatLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=1138207943]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 164.0
+offset_right = 260.0
+offset_bottom = 198.0
+theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "MATCH TYPE"
+vertical_alignment = 1
+
+[node name="FormatOption" type="OptionButton" parent="MatchSetupModal/Panel" unique_id=667243339]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 160.0
+offset_right = 566.0
+offset_bottom = 202.0
+theme_override_font_sizes/font_size = 18
+
+[node name="BestOfLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=318509257]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 228.0
+offset_right = 260.0
+offset_bottom = 262.0
+theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "FORMAT LENGTH"
+vertical_alignment = 1
+
+[node name="BestOfOption" type="OptionButton" parent="MatchSetupModal/Panel" unique_id=1254476684]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 224.0
+offset_right = 566.0
+offset_bottom = 266.0
+theme_override_font_sizes/font_size = 18
+
+[node name="CustomTargetLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=1384417125]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 292.0
+offset_right = 260.0
+offset_bottom = 326.0
+theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "CUSTOM FIRST TO"
+vertical_alignment = 1
+
+[node name="CustomTarget" type="SpinBox" parent="MatchSetupModal/Panel" unique_id=1901106183]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 288.0
+offset_right = 566.0
+offset_bottom = 330.0
+min_value = 1.0
+max_value = 50.0
+value = 6.0
+
+[node name="StarterLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=1720035790]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 356.0
+offset_right = 260.0
+offset_bottom = 390.0
+theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "THROWS FIRST"
+vertical_alignment = 1
+
+[node name="StarterOption" type="OptionButton" parent="MatchSetupModal/Panel" unique_id=1072416133]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 352.0
+offset_right = 566.0
+offset_bottom = 394.0
+theme_override_font_sizes/font_size = 18
+
+[node name="DoubleInLabel" type="Label" parent="MatchSetupModal/Panel" unique_id=1828417043]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 420.0
+offset_right = 260.0
+offset_bottom = 454.0
+theme_override_colors/font_color = Color(0.76, 0.78, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "ENTRY RULE"
+vertical_alignment = 1
+
+[node name="DoubleInToggle" type="CheckBox" parent="MatchSetupModal/Panel" unique_id=1247957868]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 414.0
+offset_right = 566.0
+offset_bottom = 456.0
+theme_override_font_sizes/font_size = 18
+text = "Double in"
+
+[node name="SetsHint" type="Label" parent="MatchSetupModal/Panel" unique_id=433807980]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 612.0
+offset_right = 566.0
+offset_bottom = 646.0
+theme_override_colors/font_color = Color(0.68, 0.7, 0.86, 1)
+theme_override_font_sizes/font_size = 15
+text = "Custom first-to applies to legs or sets. Sets use best of 5 legs."
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="MatchSetupModal/Panel" unique_id=730719468]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 548.0
+offset_right = 566.0
+offset_bottom = 596.0
+theme_override_font_sizes/font_size = 20
+text = "Start Match"
+
+[node name="StatsSummaryModal" type="Control" parent="." unique_id=209793711]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("6_stats")
+
+[node name="Backdrop" type="ColorRect" parent="StatsSummaryModal" unique_id=1515748681]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.56)
+
+[node name="Panel" type="ColorRect" parent="StatsSummaryModal" unique_id=1743807444]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 118.0
+offset_right = 1640.0
+offset_bottom = 962.0
+color = Color(0.075, 0.08, 0.13, 0.985)
+
+[node name="Frame" type="ColorRect" parent="StatsSummaryModal/Panel" unique_id=403691596]
+layout_mode = 0
+offset_right = 1360.0
+offset_bottom = 844.0
+color = Color(0.015, 0.018, 0.03, 0.32)
+
+[node name="Header" type="ColorRect" parent="StatsSummaryModal/Panel" unique_id=1068060417]
+layout_mode = 0
+offset_right = 1360.0
+offset_bottom = 58.0
+color = Color(0.72, 0.02, 0.06, 1)
+
+[node name="Title" type="Label" parent="StatsSummaryModal/Panel/Header" unique_id=1847484932]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 1336.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_font_sizes/font_size = 26
+text = "MATCH COMPLETE"
+vertical_alignment = 1
+
+[node name="MetaText" type="Label" parent="StatsSummaryModal/Panel" unique_id=1850000213]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 84.0
+offset_right = 1326.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.72, 0.74, 0.95, 1)
+theme_override_font_sizes/font_size = 16
+text = "501 start | Straight in | Double out"
+vertical_alignment = 1
+
+[node name="SummaryTable" type="GridContainer" parent="StatsSummaryModal/Panel" unique_id=1918217458]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 120.0
+offset_right = 842.0
+offset_bottom = 400.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="BreakdownHeader" type="Label" parent="StatsSummaryModal/Panel" unique_id=225555390]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 420.0
+offset_right = 1326.0
+offset_bottom = 448.0
+theme_override_colors/font_color = Color(0.72, 0.74, 0.95, 1)
+theme_override_font_sizes/font_size = 16
+text = "LEG BREAKDOWN"
+vertical_alignment = 1
+
+[node name="BreakdownScroll" type="ScrollContainer" parent="StatsSummaryModal/Panel" unique_id=1870910234]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 456.0
+offset_right = 1326.0
+offset_bottom = 772.0
+
+[node name="BreakdownTable" type="GridContainer" parent="StatsSummaryModal/Panel/BreakdownScroll" unique_id=1030755061]
+custom_minimum_size = Vector2(1278, 286)
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 6
+
+[node name="ContinueButton" type="Button" parent="StatsSummaryModal/Panel" unique_id=1078580307]
+layout_mode = 0
+offset_left = 1112.0
+offset_top = 790.0
+offset_right = 1326.0
+offset_bottom = 828.0
+theme_override_font_sizes/font_size = 20
+text = "Close"
+
+[node name="TournamentScreen" type="Control" parent="." unique_id=335996449]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("7_tournament")
+
+[node name="MobileFullscreenLayout" type="Node" parent="."]
+script = ExtResource("8_mobile_layout")
+
+[node name="MobilePauseOverlay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("9_mobile_pause")

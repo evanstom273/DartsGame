@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=2 format=3 uid="uid://d2qoed4ejlvqd"]
+
+[ext_resource type="Script" uid="uid://druynf4mitdop" path="res://scripts/resources/character_data.gd" id="1_character"]
+
+[resource]
+script = ExtResource("1_character")
+display_name = "Pro"
+average_min = 60.0
+average_max = 90.0
+variance = 7.0
+treble_consistency = 0.42
+double_consistency = 0.34
+single_consistency = 0.86
+nerve = 0.62
+preferred_scoring_targets = Array[String](["T20", "T19", "T18", "T17"])
+preferred_checkout_doubles = Array[String](["D20", "D16", "D18", "D12", "D10"])
+maximum_appetite = 1.0
+heavy_scoring_bias = 1.0
+opening_phase_bias = 1.0
+nine_darter_appetite = 0.75
+preferred_checkout_routes = {
+"121": Array[String](["T17", "T20", "D5"])
+}
+vertical_speed = 610.0
+horizontal_speed = 710.0
+visible_wobble_pixels = 1.5
+line_chaos_strength = 1.75
+post_lock_drift_pixels = 7.0
+post_lock_drift_duration = 0.16
+fatigue_per_dart = 0.38
+control_skill = 0.44
+pressure = 0.32
